@@ -1,0 +1,34 @@
+
+import Foundation
+import ProtocolType
+
+%{
+    import json
+    
+    modules = []
+    with open('../../commonProtocols.json') as file:
+        modules = json.loads(file.read())
+}%
+% for module in modules:
+%{ moduleName = module['module'] }%
+
+// ${moduleName}
+#if canImport(${moduleName})
+import ${moduleName}
+
+% for type in module['types']:
+%{ typeName = type['name'] }%
+% if 'availability' in module:
+${module['availability']}
+% end
+public protocol ${typeName}Visitor: AssociatedTypeRequirementsVisitor {
+    associatedtype Visitor = ${typeName}Visitor
+    associatedtype Input = ${typeName}
+    associatedtype Output
+    
+    func callAsFunction<T : ${typeName}>(_ value: T) -> Output
+}
+
+% end
+#endif
+% end

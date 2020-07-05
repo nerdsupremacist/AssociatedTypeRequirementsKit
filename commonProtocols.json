@@ -1,0 +1,104 @@
+[
+    {
+        "module" : "Swift",
+        "types" : [
+            {
+                "name" : "BinaryFloatingPoint",
+                "mangledName" : "SB"
+            },
+            {
+                "name" : "Encodable",
+                "mangledShorthand" : "SE"
+            },
+            {
+                "name" : "Decodable",
+                "mangledShorthand" : "Sd"
+            },
+            {
+                "name" : "RandomNumberGenerator",
+                "mangledShorthand" : "SG"
+            },
+            {
+                "name" : "Hashable",
+                "mangledShorthand" : "SH"
+            },
+            {
+                "name" : "Numeric",
+                "mangledShorthand" : "Sj"
+            },
+            {
+                "name" : "BidirectionalCollection",
+                "mangledShorthand" : "SK"
+            },
+            {
+                "name" : "RandomAccessCollection",
+                "mangledShorthand" : "Sk"
+            },
+            {
+                "name" : "Comparable",
+                "mangledShorthand" : "SL"
+            },
+            {
+                "name" : "Collection",
+                "mangledName" : "Sl"
+            },
+            {
+                "name" : "MutableCollection",
+                "mangledShorthand" : "SM"
+            },
+            {
+                "name" : "RangeReplaceableCollection",
+                "mangledShorthand" : "Sm"
+            },
+            {
+                "name" : "Equatable",
+                "mangledShorthand" : "SQ"
+            },
+            {
+                "name" : "Sequence",
+                "mangledShorthand" : "ST"
+            },
+            {
+                "name" : "IteratorProtocol",
+                "mangledShorthand" : "St"
+            },
+            {
+                "name" : "UnsignedInteger",
+                "mangledShorthand" : "SU"
+            },
+            {
+                "name" : "RangeExpression",
+                "mangledShorthand" : "SX"
+            },
+            {
+                "name" : "Strideable",
+                "mangledShorthand" : "Sx"
+            },
+            {
+                "name" : "RawRepresentable",
+                "mangledName" : "SY"
+            },
+            {
+                "name" : "StringProtocol",
+                "mangledShorthand" : "Sy"
+            },
+            {
+                "name" : "SignedInteger",
+                "mangledShorthand" : "SZ"
+            },
+            {
+                "name" : "BinaryInteger",
+                "mangledShorthand" : "Sz"
+            }
+        ]
+    },
+    {
+        "module": "SwiftUI",
+        "availability" : "@available(OSX 10.15, *)",
+        "types" : [
+            {
+                "name" : "View"
+            }
+        ]
+    }
+]

@@ -1,0 +1,58 @@
+
+import Foundation
+
+%{
+    import json
+    
+    modules = []
+    with open('../../commonProtocols.json') as file:
+        modules = json.loads(file.read())
+}%
+public struct ProtocolType {
+    public let type: Any.Type
+    
+    public init?(moduleName: ModuleName, protocolName: ProtocolName) {
+        let name = mangledName(moduleName: moduleName, protocolName: protocolName)
+        guard let type = _typeByName(name) else { return nil }
+        self.type = type
+    }
+}
+
+extension ProtocolType {
+    % for module in modules:
+    %{ moduleName = module['module'] }%
+    
+    // ${moduleName}
+    % for type in module['types']:
+    %{ typeName = type['name'] }%
+    public static let ${typeName[0].lower()}${typeName[1:]} = ProtocolType(moduleName: .${moduleName[0].lower()}${moduleName[1:]}, protocolName: .${typeName[0].lower()}${typeName[1:]})!
+    % end
+    % end
+    
+}
+
+private func mangledName(moduleName: ModuleName, protocolName: ProtocolName) -> String {
+    
+    switch moduleName {
+    % for module in modules:
+    %{ moduleName = module['module'] }%
+    %{ specialCases = [type for type in module['types'] if 'mangledShorthand' in type] }%
+    % if len(specialCases) > 0:
+    case .${moduleName[0].lower()}${moduleName[1:]}:
+        switch protocolName {
+        % for type in specialCases:
+        %{ typeName = type['name'] }%
+        case .${typeName[0].lower()}${typeName[1:]}:
+            return "${type['mangledShorthand']}"
+        % end
+        default:
+            break
+        }
+    % end
+    % end
+    default:
+        break
+    }
+
+    return "\(moduleName.rawValue.count)\(moduleName.rawValue)\(protocolName.rawValue.count)\(protocolName.rawValue)_p"
+}

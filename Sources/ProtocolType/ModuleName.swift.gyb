@@ -1,0 +1,35 @@
+
+%{
+    import json
+    
+    modules = []
+    with open('../../commonProtocols.json') as file:
+        modules = json.loads(file.read())
+}%
+import Foundation
+
+public struct ModuleName : RawRepresentable, Equatable {
+    public let rawValue: String
+    
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+}
+
+extension ModuleName : ExpressibleByStringLiteral {
+    
+    public init(stringLiteral value: String) {
+        self.init(rawValue: value)
+    }
+    
+}
+
+
+extension ModuleName {
+    
+    % for module in modules:
+    %{ name = module['module'] }%
+    public static let ${name[0].lower()}${name[1:]}: ModuleName = "${name}"
+    % end
+    
+}

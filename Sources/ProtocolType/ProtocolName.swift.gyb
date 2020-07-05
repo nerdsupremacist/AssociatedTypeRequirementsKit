@@ -1,0 +1,36 @@
+
+import Foundation
+
+%{
+    import json
+    
+    modules = []
+    with open('../../commonProtocols.json') as file:
+        modules = json.loads(file.read())
+}%
+public struct ProtocolName : RawRepresentable, Equatable {
+    public let rawValue: String
+    
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+}
+
+extension ProtocolName : ExpressibleByStringLiteral {
+    
+    public init(stringLiteral value: String) {
+        self.init(rawValue: value)
+    }
+    
+}
+
+extension ProtocolName {
+    % for module in modules:
+    
+    // ${module['module']}
+    % for type in module['types']:
+    %{ name = type['name'] }%
+    public static let ${name[0].lower()}${name[1:]}: ProtocolName = "${name}"
+    % end
+    % end
+}
