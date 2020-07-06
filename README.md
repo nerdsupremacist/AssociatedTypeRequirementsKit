@@ -83,6 +83,81 @@ protocol MyProtocolVisitor: AssociatedTypeRequirementsVisitor {
 }
 ```
 
+### Casting
+
+If you don't want to use the `AssociatedTypeRequirementsVisitor` API, you can also ask use the low level `withCasted` API and ask for the protocol conformance yourself.
+
+```swift
+import Casting
+
+func test(value: Any) -> AnyHashable? {
+    return withCasted(value, as: .hashable) { casted in 
+        // casted is CastedProtocolValue
+        ...
+    }
+}
+```
+
+But what is this `CastedProtocolValue`? Well it's a little struct that has the same layout that a function `func anyHashable<T : Hashable>(hashable: T)` would expect. So that function could be casted:
+
+```swift
+import Casting
+
+func test(value: Any) -> AnyHashable? {
+    return withCasted(value, as: .hashable) { casted in 
+        // A pointer to the function is in `functionPointer`
+        let function = unsafeBitCast(functionPointer, (@convention(thin) (CastedProtocolValue) -> AnyHashable).self)
+        return function(casted)
+    }
+}
+```
+
+### ValuePointers
+
+When you use the `withUnsafePointer` API from the Swift Standard Library, but with `Any` you'll notice that the pointer or bytes you get are not quite correct. 
+That's becasue they're pointing to the existential container `Any`, which is always 32 Bytes.
+
+That's why we ship `withUnsafeValuePointer` which will always point to the actual value, instead of the container:
+
+```swift
+import ValuePointers
+
+struct MyStruct {
+    let first: String
+    let second: String
+}
+
+let value = MyStruct(first: "A", second: "B") as Any
+let secondString = withUnsafeValuePointer(to: value) { $0.assumingMemoryBound(to: String.self).advanced(by: 1).pointee }
+
+// "B"
+print(secondString)
+```
+
+### ProtocolType
+
+Whenever you want to access the meta-type of a protocol with associated types, you'll run into this exact same problem.
+You can use `ProtocolType` to access it via the name of the protocol:
+
+```swift
+import ProtocolType
+
+let protocolType = ProtocolType(moduleName: "SwiftUI", protocolName: "View")
+print(protocolType?.type) // SwiftUI.View.self
+```
+
+And ProtocolType provides a set of constants already shipped. The list of constants can be changed in the `commonProtocols.json` file and can be extended further:
+
+```swift
+import ProtocolType
+
+func hash(protocol protocolType: ProtocolType) -> some Hashable {
+    return unsafeBitCast(type, as: Int.self)
+}
+
+let hashed = hash(protocol: .collection)
+```
+
 ## Contributions
 Contributions are welcome and encouraged!
 
