@@ -68,17 +68,6 @@ private struct AnyViewConverter : ViewVisitor {
         return AnyView(value)
     }
 }
-
-extension TupleView {
-
-    func subviews() -> [AnyView] {
-        let mirror = Mirror(reflecting: self)
-        let tuple = mirror.children.first!.value
-        let tupleMirror = Mirror(reflecting: tuple)
-        return tupleMirror.children.map { converter($0.value)! }
-    }
-
-}
 ```
 
 But why would you need to do this? Well, for example if you want to get all the subviews of a tuple view?
