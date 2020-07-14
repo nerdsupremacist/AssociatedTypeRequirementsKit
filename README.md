@@ -47,7 +47,7 @@ let package = Package(
 
 If you want to be able to call a function on a protocol with associated types, then you'll have to provide a generic function. Since closures cannot be generic, we have to use a protocol to encode this.
 
-For example if you want to be able to turn take any a SwiftUI view into an AnyView, but you don't know the type at compile time, you can use `ViewVisitor`:
+For example if you want to be able to turn any SwiftUI view into an AnyView, but you don't know the type at compile time, you can use `ViewVisitor`:
 
 ```swift
 import AssociatedTypeRequirementsVisitor
@@ -68,9 +68,35 @@ private struct AnyViewConverter : ViewVisitor {
         return AnyView(value)
     }
 }
+
+extension TupleView {
+
+    func subviews() -> [AnyView] {
+        let mirror = Mirror(reflecting: self)
+        let tuple = mirror.children.first!.value
+        let tupleMirror = Mirror(reflecting: tuple)
+        return tupleMirror.children.map { converter($0.value)! }
+    }
+
+}
 ```
 
-This is because we are already shipping visitor protocols for the most important problematic protocols in Swift right now, and are extending the list as we go.
+But why would you need to do this? Well, for example if you want to get all the subviews of a tuple view?
+
+```swift
+extension TupleView {
+
+    func subviews() -> [AnyView] {
+        let mirror = Mirror(reflecting: self)
+        let tuple = mirror.children.first!.value
+        let tupleMirror = Mirror(reflecting: tuple)
+        return tupleMirror.children.map { AnyView($0.value)! }
+    }
+
+}
+```
+
+`ViewVisitor` is available out of the box because we are already shipping visitor protocols for the most important problematic protocols in Swift right now, and are extending the list as we go.
 If you have to handle your own protocol you can do it as in the following example:
 
 ```swift
