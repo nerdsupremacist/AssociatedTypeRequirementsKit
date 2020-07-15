@@ -17,7 +17,7 @@ final class VisitorTests: XCTestCase {
     }
     
     #if canImport(SwiftUI)
-    @available(OSX 10.15, *)
+    @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
     func testVisitView() {
         let value: Any = Text("One two three four")
         let eraser = ViewTypeEraser()
@@ -37,7 +37,7 @@ struct AnyHasher: HashableVisitor {
 }
 
 #if canImport(SwiftUI)
-@available(OSX 10.15, *)
+@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 struct ViewTypeEraser: ViewVisitor {
     
     func callAsFunction<T : View>(_ value: T) -> AnyView {
