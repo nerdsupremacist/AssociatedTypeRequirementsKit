@@ -29,6 +29,17 @@ public protocol ${typeName}Visitor: AssociatedTypeRequirementsVisitor {
     func callAsFunction<T : ${typeName}>(_ value: T) -> Output
 }
 
+% if 'availability' in module:
+${module['availability']}
+% end
+public protocol ${typeName}TypeVisitor: AssociatedTypeRequirementsTypeVisitor {
+    associatedtype Visitor = ${typeName}TypeVisitor
+    associatedtype Input = ${typeName}
+    associatedtype Output
+
+    func callAsFunction<T : ${typeName}>(_ type: T.Type) -> Output
+}
+
 % end
 #endif
 % end

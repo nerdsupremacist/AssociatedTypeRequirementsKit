@@ -7,6 +7,18 @@ import SwiftUI
 #endif
 
 final class VisitorTests: XCTestCase {
+    func testVisitDecodableType() {
+        let type: Any.Type = SomeDedecodable.self
+        let json = """
+        {
+         "a": "A",
+         "b": "B"
+        }
+        """
+        let value = JSONDecoder().decodeIfPossible(type, from: json.data(using: .utf8)!)
+        XCTAssertNotNil(value)
+    }
+
     func testVisitHashable() {
         let value = "String"
         let hashed = value.hashValue
@@ -26,6 +38,29 @@ final class VisitorTests: XCTestCase {
         XCTAssertNil(eraser(123))
     }
     #endif
+}
+
+struct SomeDedecodable: Decodable {
+    let a: String
+    let b: String
+}
+
+extension JSONDecoder {
+
+    func decodeIfPossible(_ type: Any.Type, from data: Data) -> Any? {
+        let visitor = JSONDecoderVisitor(decoder: self, data: data)
+        return visitor(type)
+    }
+
+}
+
+private struct JSONDecoderVisitor: DecodableTypeVisitor {
+    let decoder: JSONDecoder
+    let data: Data
+
+    func callAsFunction<T : Decodable>(_ type: T.Type) -> Any {
+        return try! decoder.decode(type, from: data)
+    }
 }
 
 struct AnyHasher: HashableVisitor {
