@@ -27,7 +27,7 @@ extension VisitorTests {
     static let __allTests__VisitorTests = [
         ("testVisitDecodableType", testVisitDecodableType),
         ("testVisitHashable", testVisitHashable),
-        ("testVisitView", testVisitView),
+//        ("testVisitView", testVisitView),
     ]
 }
 
