@@ -29,7 +29,7 @@ let package = Package(
         
         .target(
             name: "ProtocolConformance",
-            dependencies: []),
+            dependencies: ["ProtocolType"]),
         
         .target(
             name: "CContext",

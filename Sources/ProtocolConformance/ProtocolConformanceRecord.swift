@@ -1,5 +1,6 @@
 
 import Foundation
+import ProtocolType
 
 public struct ProtocolConformanceRecord {
     public let type: Any.Type
@@ -14,6 +15,14 @@ extension ProtocolConformanceRecord {
         self.init(type: implementationType, witnessTable: witnessTable)
     }
     
+}
+
+extension ProtocolConformanceRecord {
+
+    public init?(implementationType: Any.Type, protocolType: ProtocolType) {
+        self.init(implementationType: implementationType, protocolType: protocolType.type)
+    }
+
 }
 
 private struct ProtocolDescriptor { }
