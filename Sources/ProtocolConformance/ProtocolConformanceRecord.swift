@@ -2,6 +2,8 @@
 import Foundation
 import ProtocolType
 
+// MARK: Getting the conformance record
+
 public struct ProtocolConformanceRecord {
     public let type: Any.Type
     public let witnessTable: UnsafeRawPointer?
@@ -25,6 +27,19 @@ extension ProtocolConformanceRecord {
 
 }
 
+// MARK: - Checking for conformance
+
+public func does(_ implementationType: Any.Type, conformTo protocolType: Any.Type) -> Bool {
+    let metadata = ProtocolMetadata(type: protocolType)
+    return _conformsToProtocol(implementationType, metadata.protocolDescriptorVector) != nil
+}
+
+public func does(_ implementationType: Any.Type, conformTo protocolType: ProtocolType) -> Bool {
+    return does(implementationType, conformTo: protocolType.type)
+}
+
+// MARK: - Structure of Protocol Metadata
+
 private struct ProtocolDescriptor { }
 
 private struct ProtocolMetadata {
@@ -37,6 +52,8 @@ private struct ProtocolMetadata {
         self = unsafeBitCast(type, to: UnsafeMutablePointer<Self>.self).pointee
     }
 }
+
+// MARK: - Runtime functions
 
 @_silgen_name("swift_conformsToProtocol")
 private func _conformsToProtocol(
