@@ -1,0 +1,20 @@
+
+import ProtocolType
+
+%{
+    import json
+
+    modules = []
+    with open('../../commonProtocols.json') as file:
+        modules = json.loads(file.read())
+}%
+% for module in modules:
+// ${module['module']}
+% for type in module['types']:
+%{ name = type['name'] }%
+public func is${name}(_ type: Any.Type) -> Bool {
+    return does(type, conformTo: .${name[0].lower()}${name[1:]})
+}
+
+% end
+% end
