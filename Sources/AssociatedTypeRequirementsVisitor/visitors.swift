@@ -359,6 +359,24 @@ public protocol BinaryIntegerTypeVisitor: AssociatedTypeRequirementsTypeVisitor 
     func callAsFunction<T : BinaryInteger>(_ type: T.Type) -> Output
 }
 
+@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+public protocol IdentifiableVisitor: AssociatedTypeRequirementsVisitor {
+    associatedtype Visitor = IdentifiableVisitor
+    associatedtype Input = Identifiable
+    associatedtype Output
+    
+    func callAsFunction<T : Identifiable>(_ value: T) -> Output
+}
+
+@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+public protocol IdentifiableTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
+    associatedtype Visitor = IdentifiableTypeVisitor
+    associatedtype Input = Identifiable
+    associatedtype Output
+
+    func callAsFunction<T : Identifiable>(_ type: T.Type) -> Output
+}
+
 #endif
 
 // SwiftUI

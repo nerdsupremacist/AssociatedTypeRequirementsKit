@@ -36,6 +36,7 @@ extension ProtocolType {
     public static let stringProtocol = ProtocolType(moduleName: .swift, protocolName: .stringProtocol)!
     public static let signedInteger = ProtocolType(moduleName: .swift, protocolName: .signedInteger)!
     public static let binaryInteger = ProtocolType(moduleName: .swift, protocolName: .binaryInteger)!
+    public static let identifiable = ProtocolType(moduleName: .swift, protocolName: .identifiable)!
     
     // SwiftUI
     public static let view = ProtocolType(moduleName: .swiftUI, protocolName: .view)!

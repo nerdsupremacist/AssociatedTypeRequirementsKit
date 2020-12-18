@@ -42,6 +42,7 @@ extension ProtocolName {
     public static let stringProtocol: ProtocolName = "StringProtocol"
     public static let signedInteger: ProtocolName = "SignedInteger"
     public static let binaryInteger: ProtocolName = "BinaryInteger"
+    public static let identifiable: ProtocolName = "Identifiable"
     
     // SwiftUI
     public static let view: ProtocolName = "View"

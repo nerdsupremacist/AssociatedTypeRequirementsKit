@@ -20,6 +20,8 @@ import ${moduleName}
 %{ typeName = type['name'] }%
 % if 'availability' in module:
 ${module['availability']}
+% elif 'availability' in type:
+${type['availability']}
 % end
 public protocol ${typeName}Visitor: AssociatedTypeRequirementsVisitor {
     associatedtype Visitor = ${typeName}Visitor
@@ -31,6 +33,8 @@ public protocol ${typeName}Visitor: AssociatedTypeRequirementsVisitor {
 
 % if 'availability' in module:
 ${module['availability']}
+% elif 'availability' in type:
+${type['availability']}
 % end
 public protocol ${typeName}TypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = ${typeName}TypeVisitor

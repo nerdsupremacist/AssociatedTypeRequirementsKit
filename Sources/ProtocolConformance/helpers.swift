@@ -90,6 +90,10 @@ public func isBinaryInteger(_ type: Any.Type) -> Bool {
     return does(type, conformTo: .binaryInteger)
 }
 
+public func isIdentifiable(_ type: Any.Type) -> Bool {
+    return does(type, conformTo: .identifiable)
+}
+
 // SwiftUI
 public func isView(_ type: Any.Type) -> Bool {
     return does(type, conformTo: .view)
