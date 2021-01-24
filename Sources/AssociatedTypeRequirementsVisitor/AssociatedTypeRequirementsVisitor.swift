@@ -9,6 +9,8 @@ public protocol AssociatedTypeRequirementsVisitor {
     associatedtype Visitor
     associatedtype Input
     associatedtype Output
+
+    static func _test(on instance: Self)
 }
 
 extension AssociatedTypeRequirementsVisitor {

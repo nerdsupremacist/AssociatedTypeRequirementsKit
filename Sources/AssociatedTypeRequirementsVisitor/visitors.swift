@@ -15,12 +15,32 @@ public protocol BinaryFloatingPointVisitor: AssociatedTypeRequirementsVisitor {
     func callAsFunction<T : BinaryFloatingPoint>(_ value: T) -> Output
 }
 
+extension BinaryFloatingPointVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(42.0)
+    }
+
+}
+
 public protocol BinaryFloatingPointTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = BinaryFloatingPointTypeVisitor
     associatedtype Input = BinaryFloatingPoint
     associatedtype Output
 
     func callAsFunction<T : BinaryFloatingPoint>(_ type: T.Type) -> Output
+}
+
+extension BinaryFloatingPointTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(Double.self)
+    }
+
 }
 
 public protocol EncodableVisitor: AssociatedTypeRequirementsVisitor {
@@ -31,12 +51,32 @@ public protocol EncodableVisitor: AssociatedTypeRequirementsVisitor {
     func callAsFunction<T : Encodable>(_ value: T) -> Output
 }
 
+extension EncodableVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(42)
+    }
+
+}
+
 public protocol EncodableTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = EncodableTypeVisitor
     associatedtype Input = Encodable
     associatedtype Output
 
     func callAsFunction<T : Encodable>(_ type: T.Type) -> Output
+}
+
+extension EncodableTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(Int.self)
+    }
+
 }
 
 public protocol DecodableVisitor: AssociatedTypeRequirementsVisitor {
@@ -47,12 +87,32 @@ public protocol DecodableVisitor: AssociatedTypeRequirementsVisitor {
     func callAsFunction<T : Decodable>(_ value: T) -> Output
 }
 
+extension DecodableVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(42)
+    }
+
+}
+
 public protocol DecodableTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = DecodableTypeVisitor
     associatedtype Input = Decodable
     associatedtype Output
 
     func callAsFunction<T : Decodable>(_ type: T.Type) -> Output
+}
+
+extension DecodableTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(Int.self)
+    }
+
 }
 
 public protocol RandomNumberGeneratorVisitor: AssociatedTypeRequirementsVisitor {
@@ -63,12 +123,32 @@ public protocol RandomNumberGeneratorVisitor: AssociatedTypeRequirementsVisitor 
     func callAsFunction<T : RandomNumberGenerator>(_ value: T) -> Output
 }
 
+extension RandomNumberGeneratorVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(SystemRandomNumberGenerator())
+    }
+
+}
+
 public protocol RandomNumberGeneratorTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = RandomNumberGeneratorTypeVisitor
     associatedtype Input = RandomNumberGenerator
     associatedtype Output
 
     func callAsFunction<T : RandomNumberGenerator>(_ type: T.Type) -> Output
+}
+
+extension RandomNumberGeneratorTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(SystemRandomNumberGenerator.self)
+    }
+
 }
 
 public protocol HashableVisitor: AssociatedTypeRequirementsVisitor {
@@ -79,12 +159,32 @@ public protocol HashableVisitor: AssociatedTypeRequirementsVisitor {
     func callAsFunction<T : Hashable>(_ value: T) -> Output
 }
 
+extension HashableVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(42)
+    }
+
+}
+
 public protocol HashableTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = HashableTypeVisitor
     associatedtype Input = Hashable
     associatedtype Output
 
     func callAsFunction<T : Hashable>(_ type: T.Type) -> Output
+}
+
+extension HashableTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(Int.self)
+    }
+
 }
 
 public protocol NumericVisitor: AssociatedTypeRequirementsVisitor {
@@ -95,12 +195,32 @@ public protocol NumericVisitor: AssociatedTypeRequirementsVisitor {
     func callAsFunction<T : Numeric>(_ value: T) -> Output
 }
 
+extension NumericVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(42)
+    }
+
+}
+
 public protocol NumericTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = NumericTypeVisitor
     associatedtype Input = Numeric
     associatedtype Output
 
     func callAsFunction<T : Numeric>(_ type: T.Type) -> Output
+}
+
+extension NumericTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(Int.self)
+    }
+
 }
 
 public protocol BidirectionalCollectionVisitor: AssociatedTypeRequirementsVisitor {
@@ -111,12 +231,32 @@ public protocol BidirectionalCollectionVisitor: AssociatedTypeRequirementsVisito
     func callAsFunction<T : BidirectionalCollection>(_ value: T) -> Output
 }
 
+extension BidirectionalCollectionVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance([42])
+    }
+
+}
+
 public protocol BidirectionalCollectionTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = BidirectionalCollectionTypeVisitor
     associatedtype Input = BidirectionalCollection
     associatedtype Output
 
     func callAsFunction<T : BidirectionalCollection>(_ type: T.Type) -> Output
+}
+
+extension BidirectionalCollectionTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(Array<Int>.self)
+    }
+
 }
 
 public protocol RandomAccessCollectionVisitor: AssociatedTypeRequirementsVisitor {
@@ -127,12 +267,32 @@ public protocol RandomAccessCollectionVisitor: AssociatedTypeRequirementsVisitor
     func callAsFunction<T : RandomAccessCollection>(_ value: T) -> Output
 }
 
+extension RandomAccessCollectionVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance([42])
+    }
+
+}
+
 public protocol RandomAccessCollectionTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = RandomAccessCollectionTypeVisitor
     associatedtype Input = RandomAccessCollection
     associatedtype Output
 
     func callAsFunction<T : RandomAccessCollection>(_ type: T.Type) -> Output
+}
+
+extension RandomAccessCollectionTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(Array<Int>.self)
+    }
+
 }
 
 public protocol ComparableVisitor: AssociatedTypeRequirementsVisitor {
@@ -143,12 +303,32 @@ public protocol ComparableVisitor: AssociatedTypeRequirementsVisitor {
     func callAsFunction<T : Comparable>(_ value: T) -> Output
 }
 
+extension ComparableVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(42)
+    }
+
+}
+
 public protocol ComparableTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = ComparableTypeVisitor
     associatedtype Input = Comparable
     associatedtype Output
 
     func callAsFunction<T : Comparable>(_ type: T.Type) -> Output
+}
+
+extension ComparableTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(Int.self)
+    }
+
 }
 
 public protocol CollectionVisitor: AssociatedTypeRequirementsVisitor {
@@ -159,12 +339,32 @@ public protocol CollectionVisitor: AssociatedTypeRequirementsVisitor {
     func callAsFunction<T : Collection>(_ value: T) -> Output
 }
 
+extension CollectionVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance([42])
+    }
+
+}
+
 public protocol CollectionTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = CollectionTypeVisitor
     associatedtype Input = Collection
     associatedtype Output
 
     func callAsFunction<T : Collection>(_ type: T.Type) -> Output
+}
+
+extension CollectionTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(Array<Int>.self)
+    }
+
 }
 
 public protocol MutableCollectionVisitor: AssociatedTypeRequirementsVisitor {
@@ -175,12 +375,32 @@ public protocol MutableCollectionVisitor: AssociatedTypeRequirementsVisitor {
     func callAsFunction<T : MutableCollection>(_ value: T) -> Output
 }
 
+extension MutableCollectionVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance([42])
+    }
+
+}
+
 public protocol MutableCollectionTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = MutableCollectionTypeVisitor
     associatedtype Input = MutableCollection
     associatedtype Output
 
     func callAsFunction<T : MutableCollection>(_ type: T.Type) -> Output
+}
+
+extension MutableCollectionTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(Array<Int>.self)
+    }
+
 }
 
 public protocol RangeReplaceableCollectionVisitor: AssociatedTypeRequirementsVisitor {
@@ -191,12 +411,32 @@ public protocol RangeReplaceableCollectionVisitor: AssociatedTypeRequirementsVis
     func callAsFunction<T : RangeReplaceableCollection>(_ value: T) -> Output
 }
 
+extension RangeReplaceableCollectionVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance([42])
+    }
+
+}
+
 public protocol RangeReplaceableCollectionTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = RangeReplaceableCollectionTypeVisitor
     associatedtype Input = RangeReplaceableCollection
     associatedtype Output
 
     func callAsFunction<T : RangeReplaceableCollection>(_ type: T.Type) -> Output
+}
+
+extension RangeReplaceableCollectionTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(Array<Int>.self)
+    }
+
 }
 
 public protocol EquatableVisitor: AssociatedTypeRequirementsVisitor {
@@ -207,12 +447,32 @@ public protocol EquatableVisitor: AssociatedTypeRequirementsVisitor {
     func callAsFunction<T : Equatable>(_ value: T) -> Output
 }
 
+extension EquatableVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(42)
+    }
+
+}
+
 public protocol EquatableTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = EquatableTypeVisitor
     associatedtype Input = Equatable
     associatedtype Output
 
     func callAsFunction<T : Equatable>(_ type: T.Type) -> Output
+}
+
+extension EquatableTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(Int.self)
+    }
+
 }
 
 public protocol SequenceVisitor: AssociatedTypeRequirementsVisitor {
@@ -223,12 +483,32 @@ public protocol SequenceVisitor: AssociatedTypeRequirementsVisitor {
     func callAsFunction<T : Sequence>(_ value: T) -> Output
 }
 
+extension SequenceVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(42)
+    }
+
+}
+
 public protocol SequenceTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = SequenceTypeVisitor
     associatedtype Input = Sequence
     associatedtype Output
 
     func callAsFunction<T : Sequence>(_ type: T.Type) -> Output
+}
+
+extension SequenceTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(Array<Int>.self)
+    }
+
 }
 
 public protocol IteratorProtocolVisitor: AssociatedTypeRequirementsVisitor {
@@ -239,12 +519,32 @@ public protocol IteratorProtocolVisitor: AssociatedTypeRequirementsVisitor {
     func callAsFunction<T : IteratorProtocol>(_ value: T) -> Output
 }
 
+extension IteratorProtocolVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance([42].makeIterator())
+    }
+
+}
+
 public protocol IteratorProtocolTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = IteratorProtocolTypeVisitor
     associatedtype Input = IteratorProtocol
     associatedtype Output
 
     func callAsFunction<T : IteratorProtocol>(_ type: T.Type) -> Output
+}
+
+extension IteratorProtocolTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(Array<Int>.Iterator.self)
+    }
+
 }
 
 public protocol UnsignedIntegerVisitor: AssociatedTypeRequirementsVisitor {
@@ -255,12 +555,32 @@ public protocol UnsignedIntegerVisitor: AssociatedTypeRequirementsVisitor {
     func callAsFunction<T : UnsignedInteger>(_ value: T) -> Output
 }
 
+extension UnsignedIntegerVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(42 as UInt)
+    }
+
+}
+
 public protocol UnsignedIntegerTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = UnsignedIntegerTypeVisitor
     associatedtype Input = UnsignedInteger
     associatedtype Output
 
     func callAsFunction<T : UnsignedInteger>(_ type: T.Type) -> Output
+}
+
+extension UnsignedIntegerTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(UInt.self)
+    }
+
 }
 
 public protocol RangeExpressionVisitor: AssociatedTypeRequirementsVisitor {
@@ -271,12 +591,32 @@ public protocol RangeExpressionVisitor: AssociatedTypeRequirementsVisitor {
     func callAsFunction<T : RangeExpression>(_ value: T) -> Output
 }
 
+extension RangeExpressionVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(0..<1)
+    }
+
+}
+
 public protocol RangeExpressionTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = RangeExpressionTypeVisitor
     associatedtype Input = RangeExpression
     associatedtype Output
 
     func callAsFunction<T : RangeExpression>(_ type: T.Type) -> Output
+}
+
+extension RangeExpressionTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(Range<Int>.self)
+    }
+
 }
 
 public protocol StrideableVisitor: AssociatedTypeRequirementsVisitor {
@@ -287,12 +627,32 @@ public protocol StrideableVisitor: AssociatedTypeRequirementsVisitor {
     func callAsFunction<T : Strideable>(_ value: T) -> Output
 }
 
+extension StrideableVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance([42])
+    }
+
+}
+
 public protocol StrideableTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = StrideableTypeVisitor
     associatedtype Input = Strideable
     associatedtype Output
 
     func callAsFunction<T : Strideable>(_ type: T.Type) -> Output
+}
+
+extension StrideableTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(Array<Int>.self)
+    }
+
 }
 
 public protocol RawRepresentableVisitor: AssociatedTypeRequirementsVisitor {
@@ -303,12 +663,32 @@ public protocol RawRepresentableVisitor: AssociatedTypeRequirementsVisitor {
     func callAsFunction<T : RawRepresentable>(_ value: T) -> Output
 }
 
+extension RawRepresentableVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(TestRawRepresentable.test)
+    }
+
+}
+
 public protocol RawRepresentableTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = RawRepresentableTypeVisitor
     associatedtype Input = RawRepresentable
     associatedtype Output
 
     func callAsFunction<T : RawRepresentable>(_ type: T.Type) -> Output
+}
+
+extension RawRepresentableTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(TestRawRepresentable.self.self)
+    }
+
 }
 
 public protocol StringProtocolVisitor: AssociatedTypeRequirementsVisitor {
@@ -319,12 +699,32 @@ public protocol StringProtocolVisitor: AssociatedTypeRequirementsVisitor {
     func callAsFunction<T : StringProtocol>(_ value: T) -> Output
 }
 
+extension StringProtocolVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance("")
+    }
+
+}
+
 public protocol StringProtocolTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = StringProtocolTypeVisitor
     associatedtype Input = StringProtocol
     associatedtype Output
 
     func callAsFunction<T : StringProtocol>(_ type: T.Type) -> Output
+}
+
+extension StringProtocolTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(String.self)
+    }
+
 }
 
 public protocol SignedIntegerVisitor: AssociatedTypeRequirementsVisitor {
@@ -335,12 +735,32 @@ public protocol SignedIntegerVisitor: AssociatedTypeRequirementsVisitor {
     func callAsFunction<T : SignedInteger>(_ value: T) -> Output
 }
 
+extension SignedIntegerVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(42)
+    }
+
+}
+
 public protocol SignedIntegerTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = SignedIntegerTypeVisitor
     associatedtype Input = SignedInteger
     associatedtype Output
 
     func callAsFunction<T : SignedInteger>(_ type: T.Type) -> Output
+}
+
+extension SignedIntegerTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(Int.self)
+    }
+
 }
 
 public protocol BinaryIntegerVisitor: AssociatedTypeRequirementsVisitor {
@@ -351,12 +771,32 @@ public protocol BinaryIntegerVisitor: AssociatedTypeRequirementsVisitor {
     func callAsFunction<T : BinaryInteger>(_ value: T) -> Output
 }
 
+extension BinaryIntegerVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(42)
+    }
+
+}
+
 public protocol BinaryIntegerTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = BinaryIntegerTypeVisitor
     associatedtype Input = BinaryInteger
     associatedtype Output
 
     func callAsFunction<T : BinaryInteger>(_ type: T.Type) -> Output
+}
+
+extension BinaryIntegerTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(Int.self)
+    }
+
 }
 
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
@@ -369,12 +809,34 @@ public protocol IdentifiableVisitor: AssociatedTypeRequirementsVisitor {
 }
 
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+extension IdentifiableVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(TestIdentifiable(id: "test"))
+    }
+
+}
+
+@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public protocol IdentifiableTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = IdentifiableTypeVisitor
     associatedtype Input = Identifiable
     associatedtype Output
 
     func callAsFunction<T : Identifiable>(_ type: T.Type) -> Output
+}
+
+@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+extension IdentifiableTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(TestIdentifiable.self.self)
+    }
+
 }
 
 #endif
@@ -393,12 +855,34 @@ public protocol ViewVisitor: AssociatedTypeRequirementsVisitor {
 }
 
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+extension ViewVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(EmptyView())
+    }
+
+}
+
+@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public protocol ViewTypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = ViewTypeVisitor
     associatedtype Input = View
     associatedtype Output
 
     func callAsFunction<T : View>(_ type: T.Type) -> Output
+}
+
+@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+extension ViewTypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(EmptyView.self)
+    }
+
 }
 
 #endif

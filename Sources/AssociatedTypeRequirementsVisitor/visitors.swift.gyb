@@ -36,12 +36,42 @@ ${module['availability']}
 % elif 'availability' in type:
 ${type['availability']}
 % end
+extension ${typeName}Visitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(${type['testValue']})
+    }
+
+}
+
+% if 'availability' in module:
+${module['availability']}
+% elif 'availability' in type:
+${type['availability']}
+% end
 public protocol ${typeName}TypeVisitor: AssociatedTypeRequirementsTypeVisitor {
     associatedtype Visitor = ${typeName}TypeVisitor
     associatedtype Input = ${typeName}
     associatedtype Output
 
     func callAsFunction<T : ${typeName}>(_ type: T.Type) -> Output
+}
+
+% if 'availability' in module:
+${module['availability']}
+% elif 'availability' in type:
+${type['availability']}
+% end
+extension ${typeName}TypeVisitor {
+
+    @inline(never)
+    @_optimize(none)
+    public static func _test(on instance: Self) {
+        _ = instance(${type['testType']}.self)
+    }
+
 }
 
 % end

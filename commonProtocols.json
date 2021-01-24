@@ -4,95 +4,141 @@
         "types" : [
             {
                 "name" : "BinaryFloatingPoint",
-                "mangledName" : "SB"
+                "mangledName" : "SB",
+                "testType": "Double",
+                "testValue": "42.0"
             },
             {
                 "name" : "Encodable",
-                "mangledShorthand" : "SE"
+                "mangledShorthand" : "SE",
+                "testType": "Int",
+                "testValue": "42"
             },
             {
                 "name" : "Decodable",
-                "mangledShorthand" : "Sd"
+                "mangledShorthand" : "Sd",
+                "testType": "Int",
+                "testValue": "42"
             },
             {
                 "name" : "RandomNumberGenerator",
-                "mangledShorthand" : "SG"
+                "mangledShorthand" : "SG",
+                "testType": "SystemRandomNumberGenerator",
+                "testValue": "SystemRandomNumberGenerator()"
             },
             {
                 "name" : "Hashable",
-                "mangledShorthand" : "SH"
+                "mangledShorthand" : "SH",
+                "testType": "Int",
+                "testValue": "42"
             },
             {
                 "name" : "Numeric",
-                "mangledShorthand" : "Sj"
+                "mangledShorthand" : "Sj",
+                "testType": "Int",
+                "testValue": "42"
             },
             {
                 "name" : "BidirectionalCollection",
-                "mangledShorthand" : "SK"
+                "mangledShorthand" : "SK",
+                "testType": "Array<Int>",
+                "testValue": "[42]"
             },
             {
                 "name" : "RandomAccessCollection",
-                "mangledShorthand" : "Sk"
+                "mangledShorthand" : "Sk",
+                "testType": "Array<Int>",
+                "testValue": "[42]"
             },
             {
                 "name" : "Comparable",
-                "mangledShorthand" : "SL"
+                "mangledShorthand" : "SL",
+                "testType": "Int",
+                "testValue": "42"
             },
             {
                 "name" : "Collection",
-                "mangledName" : "Sl"
+                "mangledName" : "Sl",
+                "testType": "Array<Int>",
+                "testValue": "[42]"
             },
             {
                 "name" : "MutableCollection",
-                "mangledShorthand" : "SM"
+                "mangledShorthand" : "SM",
+                "testType": "Array<Int>",
+                "testValue": "[42]"
             },
             {
                 "name" : "RangeReplaceableCollection",
-                "mangledShorthand" : "Sm"
+                "mangledShorthand" : "Sm",
+                "testType": "Array<Int>",
+                "testValue": "[42]"
             },
             {
                 "name" : "Equatable",
-                "mangledShorthand" : "SQ"
+                "mangledShorthand" : "SQ",
+                "testType": "Int",
+                "testValue": "42"
             },
             {
                 "name" : "Sequence",
-                "mangledShorthand" : "ST"
+                "mangledShorthand" : "ST",
+                "testType": "Array<Int>",
+                "testValue": "42"
             },
             {
                 "name" : "IteratorProtocol",
-                "mangledShorthand" : "St"
+                "mangledShorthand" : "St",
+                "testType": "Array<Int>.Iterator",
+                "testValue": "[42].makeIterator()"
             },
             {
                 "name" : "UnsignedInteger",
-                "mangledShorthand" : "SU"
+                "mangledShorthand" : "SU",
+                "testType": "UInt",
+                "testValue": "42 as UInt"
             },
             {
                 "name" : "RangeExpression",
-                "mangledShorthand" : "SX"
+                "mangledShorthand" : "SX",
+                "testType": "Range<Int>",
+                "testValue": "0..<1"
             },
             {
                 "name" : "Strideable",
-                "mangledShorthand" : "Sx"
+                "mangledShorthand" : "Sx",
+                "testType": "Array<Int>",
+                "testValue": "[42]"
             },
             {
                 "name" : "RawRepresentable",
-                "mangledName" : "SY"
+                "mangledName" : "SY",
+                "testType": "TestRawRepresentable.self",
+                "testValue": "TestRawRepresentable.test"
             },
             {
                 "name" : "StringProtocol",
-                "mangledShorthand" : "Sy"
+                "mangledShorthand" : "Sy",
+                "testType": "String",
+                "testValue": "\"\""
             },
             {
                 "name" : "SignedInteger",
-                "mangledShorthand" : "SZ"
+                "mangledShorthand" : "SZ",
+                "testType": "Int",
+                "testValue": "42"
             },
             {
                 "name" : "BinaryInteger",
-                "mangledShorthand" : "Sz"
+                "mangledShorthand" : "Sz",
+                "testType": "Int",
+                "testValue": "42"
             },
             {
                 "name" : "Identifiable",
-                "availability" : "@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)"
+                "availability" : "@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)",
+                "testType": "TestIdentifiable.self",
+                "testValue": "TestIdentifiable(id: \"test\")"
             }
         ]
     },
@@ -101,7 +147,9 @@
         "availability" : "@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)",
         "types" : [
             {
-                "name" : "View"
+                "name" : "View",
+                "testType": "EmptyView",
+                "testValue": "EmptyView()"
             }
         ]
     }
