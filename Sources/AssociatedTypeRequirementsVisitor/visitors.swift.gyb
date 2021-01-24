@@ -40,8 +40,8 @@ extension ${typeName}Visitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(${type['testValue']})
+    public func _test() {
+        _ = self(${type['testValue']})
     }
 
 }
@@ -68,8 +68,8 @@ extension ${typeName}TypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(${type['testType']}.self)
+    public func _test() {
+        _ = self(${type['testType']}.self)
     }
 
 }

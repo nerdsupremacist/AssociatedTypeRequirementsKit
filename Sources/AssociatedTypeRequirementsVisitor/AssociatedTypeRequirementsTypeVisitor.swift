@@ -10,12 +10,17 @@ public protocol AssociatedTypeRequirementsTypeVisitor {
     associatedtype Input
     associatedtype Output
 
-    static func _test(on instance: Self)
+    func _test()
 }
 
 extension AssociatedTypeRequirementsTypeVisitor {
 
     public func callAsFunction(_ type: Any.Type) -> Output? {
+        if _isTesting {
+            _test()
+            _testAssocaitedTypeRequirementVisitors(false)
+        }
+
         guard let visitorWitnessTable = ProtocolConformanceRecord(implementationType: Self.self, protocolType: Visitor.self) else { return nil }
         guard let conformanceRecord = ProtocolConformanceRecord(implementationType: type, protocolType: Input.self) else { return nil }
 

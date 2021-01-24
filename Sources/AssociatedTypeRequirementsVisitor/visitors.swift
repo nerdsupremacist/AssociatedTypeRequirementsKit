@@ -19,8 +19,8 @@ extension BinaryFloatingPointVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(42.0)
+    public func _test() {
+        _ = self(42.0)
     }
 
 }
@@ -37,8 +37,8 @@ extension BinaryFloatingPointTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(Double.self)
+    public func _test() {
+        _ = self(Double.self)
     }
 
 }
@@ -55,8 +55,8 @@ extension EncodableVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(42)
+    public func _test() {
+        _ = self(42)
     }
 
 }
@@ -73,8 +73,8 @@ extension EncodableTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(Int.self)
+    public func _test() {
+        _ = self(Int.self)
     }
 
 }
@@ -91,8 +91,8 @@ extension DecodableVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(42)
+    public func _test() {
+        _ = self(42)
     }
 
 }
@@ -109,8 +109,8 @@ extension DecodableTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(Int.self)
+    public func _test() {
+        _ = self(Int.self)
     }
 
 }
@@ -127,8 +127,8 @@ extension RandomNumberGeneratorVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(SystemRandomNumberGenerator())
+    public func _test() {
+        _ = self(SystemRandomNumberGenerator())
     }
 
 }
@@ -145,8 +145,8 @@ extension RandomNumberGeneratorTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(SystemRandomNumberGenerator.self)
+    public func _test() {
+        _ = self(SystemRandomNumberGenerator.self)
     }
 
 }
@@ -163,8 +163,8 @@ extension HashableVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(42)
+    public func _test() {
+        _ = self(42)
     }
 
 }
@@ -181,8 +181,8 @@ extension HashableTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(Int.self)
+    public func _test() {
+        _ = self(Int.self)
     }
 
 }
@@ -199,8 +199,8 @@ extension NumericVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(42)
+    public func _test() {
+        _ = self(42)
     }
 
 }
@@ -217,8 +217,8 @@ extension NumericTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(Int.self)
+    public func _test() {
+        _ = self(Int.self)
     }
 
 }
@@ -235,8 +235,8 @@ extension BidirectionalCollectionVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance([42])
+    public func _test() {
+        _ = self([42])
     }
 
 }
@@ -253,8 +253,8 @@ extension BidirectionalCollectionTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(Array<Int>.self)
+    public func _test() {
+        _ = self(Array<Int>.self)
     }
 
 }
@@ -271,8 +271,8 @@ extension RandomAccessCollectionVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance([42])
+    public func _test() {
+        _ = self([42])
     }
 
 }
@@ -289,8 +289,8 @@ extension RandomAccessCollectionTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(Array<Int>.self)
+    public func _test() {
+        _ = self(Array<Int>.self)
     }
 
 }
@@ -307,8 +307,8 @@ extension ComparableVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(42)
+    public func _test() {
+        _ = self(42)
     }
 
 }
@@ -325,8 +325,8 @@ extension ComparableTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(Int.self)
+    public func _test() {
+        _ = self(Int.self)
     }
 
 }
@@ -343,8 +343,8 @@ extension CollectionVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance([42])
+    public func _test() {
+        _ = self([42])
     }
 
 }
@@ -361,8 +361,8 @@ extension CollectionTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(Array<Int>.self)
+    public func _test() {
+        _ = self(Array<Int>.self)
     }
 
 }
@@ -379,8 +379,8 @@ extension MutableCollectionVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance([42])
+    public func _test() {
+        _ = self([42])
     }
 
 }
@@ -397,8 +397,8 @@ extension MutableCollectionTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(Array<Int>.self)
+    public func _test() {
+        _ = self(Array<Int>.self)
     }
 
 }
@@ -415,8 +415,8 @@ extension RangeReplaceableCollectionVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance([42])
+    public func _test() {
+        _ = self([42])
     }
 
 }
@@ -433,8 +433,8 @@ extension RangeReplaceableCollectionTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(Array<Int>.self)
+    public func _test() {
+        _ = self(Array<Int>.self)
     }
 
 }
@@ -451,8 +451,8 @@ extension EquatableVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(42)
+    public func _test() {
+        _ = self(42)
     }
 
 }
@@ -469,8 +469,8 @@ extension EquatableTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(Int.self)
+    public func _test() {
+        _ = self(Int.self)
     }
 
 }
@@ -487,8 +487,8 @@ extension SequenceVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(42)
+    public func _test() {
+        _ = self(42)
     }
 
 }
@@ -505,8 +505,8 @@ extension SequenceTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(Array<Int>.self)
+    public func _test() {
+        _ = self(Array<Int>.self)
     }
 
 }
@@ -523,8 +523,8 @@ extension IteratorProtocolVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance([42].makeIterator())
+    public func _test() {
+        _ = self([42].makeIterator())
     }
 
 }
@@ -541,8 +541,8 @@ extension IteratorProtocolTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(Array<Int>.Iterator.self)
+    public func _test() {
+        _ = self(Array<Int>.Iterator.self)
     }
 
 }
@@ -559,8 +559,8 @@ extension UnsignedIntegerVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(42 as UInt)
+    public func _test() {
+        _ = self(42 as UInt)
     }
 
 }
@@ -577,8 +577,8 @@ extension UnsignedIntegerTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(UInt.self)
+    public func _test() {
+        _ = self(UInt.self)
     }
 
 }
@@ -595,8 +595,8 @@ extension RangeExpressionVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(0..<1)
+    public func _test() {
+        _ = self(0..<1)
     }
 
 }
@@ -613,8 +613,8 @@ extension RangeExpressionTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(Range<Int>.self)
+    public func _test() {
+        _ = self(Range<Int>.self)
     }
 
 }
@@ -631,8 +631,8 @@ extension StrideableVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance([42])
+    public func _test() {
+        _ = self([42])
     }
 
 }
@@ -649,8 +649,8 @@ extension StrideableTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(Array<Int>.self)
+    public func _test() {
+        _ = self(Array<Int>.self)
     }
 
 }
@@ -667,8 +667,8 @@ extension RawRepresentableVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(TestRawRepresentable.test)
+    public func _test() {
+        _ = self(TestRawRepresentable.test)
     }
 
 }
@@ -685,8 +685,8 @@ extension RawRepresentableTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(TestRawRepresentable.self.self)
+    public func _test() {
+        _ = self(TestRawRepresentable.self.self)
     }
 
 }
@@ -703,8 +703,8 @@ extension StringProtocolVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance("")
+    public func _test() {
+        _ = self("")
     }
 
 }
@@ -721,8 +721,8 @@ extension StringProtocolTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(String.self)
+    public func _test() {
+        _ = self(String.self)
     }
 
 }
@@ -739,8 +739,8 @@ extension SignedIntegerVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(42)
+    public func _test() {
+        _ = self(42)
     }
 
 }
@@ -757,8 +757,8 @@ extension SignedIntegerTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(Int.self)
+    public func _test() {
+        _ = self(Int.self)
     }
 
 }
@@ -775,8 +775,8 @@ extension BinaryIntegerVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(42)
+    public func _test() {
+        _ = self(42)
     }
 
 }
@@ -793,8 +793,8 @@ extension BinaryIntegerTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(Int.self)
+    public func _test() {
+        _ = self(Int.self)
     }
 
 }
@@ -813,8 +813,8 @@ extension IdentifiableVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(TestIdentifiable(id: "test"))
+    public func _test() {
+        _ = self(TestIdentifiable(id: "test"))
     }
 
 }
@@ -833,8 +833,8 @@ extension IdentifiableTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(TestIdentifiable.self.self)
+    public func _test() {
+        _ = self(TestIdentifiable.self.self)
     }
 
 }
@@ -859,8 +859,8 @@ extension ViewVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(EmptyView())
+    public func _test() {
+        _ = self(EmptyView())
     }
 
 }
@@ -879,8 +879,8 @@ extension ViewTypeVisitor {
 
     @inline(never)
     @_optimize(none)
-    public static func _test(on instance: Self) {
-        _ = instance(EmptyView.self)
+    public func _test() {
+        _ = self(EmptyView.self)
     }
 
 }

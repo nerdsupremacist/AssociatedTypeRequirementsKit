@@ -10,12 +10,17 @@ public protocol AssociatedTypeRequirementsVisitor {
     associatedtype Input
     associatedtype Output
 
-    static func _test(on instance: Self)
+    func _test()
 }
 
 extension AssociatedTypeRequirementsVisitor {
 
     public func callAsFunction(_ value: Any) -> Output? {
+        if _isTesting {
+            _test()
+            _testAssocaitedTypeRequirementVisitors(false)
+        }
+        
         guard let visitorWitnessTable = ProtocolConformanceRecord(implementationType: Self.self, protocolType: Visitor.self) else { return nil }
         return withCasted(value, as: Input.self) { casted in
             let functionPointer = visitorWitnessTable.witnessTable!.assumingMemoryBound(to: UnsafeRawPointer.self).advanced(by: 2).pointee
