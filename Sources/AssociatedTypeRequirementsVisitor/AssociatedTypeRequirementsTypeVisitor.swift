@@ -25,11 +25,11 @@ extension AssociatedTypeRequirementsTypeVisitor {
         guard let conformanceRecord = ProtocolConformanceRecord(implementationType: type, protocolType: Input.self) else { return nil }
 
         let functionPointer = visitorWitnessTable.witnessTable!.assumingMemoryBound(to: UnsafeRawPointer.self).advanced(by: 2).pointee
-        let function = unsafeBitCast(functionPointer, to: (@convention(thin) (UnsafeRawPointer, ProtocolConformanceRecord) -> Output).self)
+        let function = unsafeBitCast(functionPointer, to: (@convention(thin) (UnsafeRawPointer, ProtocolConformanceRecord, UnsafeRawPointer) -> Output).self)
         return withUnsafePointer(to: self) { selfPointer in
             let typePointer = unsafeBitCast(type, to: UnsafeRawPointer.self)
             set_self_pointer(UnsafeMutableRawPointer(mutating: UnsafeRawPointer(selfPointer)))
-            return function(typePointer, conformanceRecord)
+            return function(typePointer, conformanceRecord, conformanceRecord.witnessTable!)
         }
     }
 
