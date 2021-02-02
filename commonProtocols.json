@@ -84,7 +84,7 @@
                 "name" : "Sequence",
                 "mangledShorthand" : "ST",
                 "testType": "Array<Int>",
-                "testValue": "42"
+                "testValue": "[42]"
             },
             {
                 "name" : "IteratorProtocol",
@@ -107,8 +107,8 @@
             {
                 "name" : "Strideable",
                 "mangledShorthand" : "Sx",
-                "testType": "Array<Int>",
-                "testValue": "[42]"
+                "testType": "Double",
+                "testValue": "42.0"
             },
             {
                 "name" : "RawRepresentable",
@@ -137,7 +137,7 @@
             {
                 "name" : "Identifiable",
                 "availability" : "@available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)",
-                "testType": "TestIdentifiable.self",
+                "testType": "TestIdentifiable",
                 "testValue": "TestIdentifiable(id: \"test\")"
             }
         ]

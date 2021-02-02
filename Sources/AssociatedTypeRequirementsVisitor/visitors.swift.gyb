@@ -41,7 +41,7 @@ extension ${typeName}Visitor {
     @inline(never)
     @_optimize(none)
     public func _test() {
-        _ = self(${type['testValue']})
+        _ = self(${type['testValue']}) as Output
     }
 
 }
@@ -69,7 +69,7 @@ extension ${typeName}TypeVisitor {
     @inline(never)
     @_optimize(none)
     public func _test() {
-        _ = self(${type['testType']}.self)
+        _ = self(${type['testType']}.self) as Output
     }
 
 }
